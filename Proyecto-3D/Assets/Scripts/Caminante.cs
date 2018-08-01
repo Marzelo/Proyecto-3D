@@ -13,7 +13,7 @@ public class Caminante : MonoBehaviour {
     void FixedUpdate(){
         movement = transform.position;
         rotation = rigidbody3D.rotation;
-        float horizontalMovement = Input.GetAxis("Horizontal");
+
         float verticalMovement = Input.GetAxis("Vertical");
 
         if (Input.GetKey(KeyCode.Q)){
@@ -21,9 +21,6 @@ public class Caminante : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.E)){
             rotation *= Quaternion.Euler(Vector3.up * angularSpeed * Time.fixedDeltaTime);
-        }
-        if (horizontalMovement != 0){
-            movement += transform.right * movementSpeed * horizontalMovement * Time.fixedDeltaTime;
         }
         if (verticalMovement != 0){
             movement += transform.forward * movementSpeed * verticalMovement * Time.fixedDeltaTime;
