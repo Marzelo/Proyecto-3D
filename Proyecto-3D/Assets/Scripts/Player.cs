@@ -11,6 +11,9 @@ public class Player : MonoBehaviour {
     public Rigidbody rigidbody3D;
     public float salto;
 
+    public Transform gun;
+    public GameObject playerBullet;
+
     bool grounded;
     List<Collider> groundedCollection;
  
@@ -44,6 +47,9 @@ public class Player : MonoBehaviour {
          if (Input.GetKeyDown(KeyCode.Space) && grounded){
             rigidbody3D.AddForce(Vector3.up * salto, ForceMode.Impulse);
          }
+        if (Input.GetKeyDown(KeyCode.K)){
+            Instantiate(playerBullet, gun.Find("Cannon").position, transform.rotation);
+        }
     }
 
     void OnCollisionStay(Collision collision){
