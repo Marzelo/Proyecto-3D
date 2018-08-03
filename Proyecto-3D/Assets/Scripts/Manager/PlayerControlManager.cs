@@ -7,7 +7,6 @@ public class PlayerControlManager : MonoBehaviour {
     static public PlayerControlManager instance;
     public Player player;
     public Caminante caminante;
-    public Cañon canon;
 
 	void Awake(){
         if ( instance == null){
@@ -15,17 +14,15 @@ public class PlayerControlManager : MonoBehaviour {
         }
 	}
 
-    public void SwapControl () {
+    public void ControlBarco () {
         bool enabled = player.enabled;
         player.enabled = caminante.enabled;
         caminante.enabled = enabled;
     }
 
-    public void SwapControl2()
-    {
+    public void ControlCanon(Canon canon){
         bool enabled = player.enabled;
         player.enabled = canon.enabled;
         canon.enabled = enabled;
     }
-
 }

@@ -33,8 +33,11 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.E)){
             rotation *= Quaternion.Euler(Vector3.up * angularSpeed * Time.fixedDeltaTime);
         }
-        if (horizontalMovement != 0){
-            movement += transform.right * movementSpeed * horizontalMovement * Time.fixedDeltaTime;
+        if (Input.GetKey(KeyCode.D)){
+            movement += (-transform.right) * movementSpeed * Time.fixedDeltaTime;
+        }
+        if (Input.GetKey(KeyCode.A)){
+            movement += (transform.right) * movementSpeed * Time.fixedDeltaTime;
         }
         if (verticalMovement != 0){
             movement += transform.forward * movementSpeed * verticalMovement * Time.fixedDeltaTime;

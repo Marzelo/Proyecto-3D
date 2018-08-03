@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlCannon : MonoBehaviour {
+public class Control : MonoBehaviour {
 
     public Player activePlayer;
     public Collider triggerArea;
@@ -10,7 +10,7 @@ public class ControlCannon : MonoBehaviour {
     public readonly string containerName = "Control";
     public readonly Vector3 idlePoint = new Vector3(0.5f, 0.75f, 0f);
     public readonly Vector3 center = new Vector3(0f, 0.75f, 0f);
-
+    
 
     bool waitForNextAction = false;
     public bool isWaiting { get { return waitForNextAction; } }
@@ -27,9 +27,8 @@ public class ControlCannon : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            PlayerControlManager.instance.SwapControl2();
+        if (Input.GetKeyDown (KeyCode.H)){
+            PlayerControlManager.instance.ControlBarco();
         }
 
     }
