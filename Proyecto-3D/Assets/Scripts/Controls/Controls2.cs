@@ -29,7 +29,7 @@ public class Controls2 : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            PlayerControlManager.instance.ControlBarco2();
+            PlayerControlManager.instance.ControlBarco2(GetComponent<Barco2>());
         }
 
     }

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
     public Rigidbody rigidbody3D;
     public float salto;
 
+    public PlayerHP playerHP;
+
     public Transform gun;
     public GameObject playerBullet;
 
@@ -50,13 +52,25 @@ public class Player : MonoBehaviour {
     }
 
     void Update(){
-         if (Input.GetKeyDown(KeyCode.Space) && grounded){
+        if (Input.GetKeyDown(KeyCode.X) && grounded){
             rigidbody3D.AddForce(Vector3.up * salto, ForceMode.Impulse);
+            //playerHP.ModifyHP(-2);
          }
-        if (Input.GetKeyDown(KeyCode.K)){
+        if (Input.GetKeyDown(KeyCode.F)){
             Instantiate(playerBullet, gun.Find("Cannon").position, transform.rotation);
         }
+        if (playerHP.currentHP <= 0){
+            Destroy(gameObject);
+        }
     }
+
+	private void OnCollisionEnter(Collision collision)
+	{
+        if (collision.transform.CompareTag("Bullet"))
+        {
+            playerHP.ModifyHP(-2);
+        }
+	}
 
     void OnCollisionStay(Collision collision){
          if (!groundedCollection.Contains(collision.collider)) {

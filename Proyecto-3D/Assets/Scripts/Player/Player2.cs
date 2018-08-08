@@ -11,6 +11,8 @@ public class Player2 : MonoBehaviour {
     public Rigidbody rigidbody3D;
     public float salto;
 
+    public PlayerHP2 playerHP2;
+
     public Transform gun;
     public GameObject playerBullet;
 
@@ -64,6 +66,15 @@ public class Player2 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.N))
         {
             Instantiate(playerBullet, gun.Find("Cannon").position, transform.rotation);
+        }
+        if (playerHP2.currentHP <= 0){
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision){
+        if (collision.transform.CompareTag("Bullet")){
+            playerHP2.ModifyHP(-2);
         }
     }
 
